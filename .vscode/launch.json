@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "PatternMatching",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/PatternMatching/PatternMatching.csproj",
+        }, {
+            "name": "Various",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/Various/Various.csproj",
+        }, {
+            "name": "Linq",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/Linq/Linq.csproj",
+        }, {
+            "name": "Async",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/Async/Async.csproj",
+        }
+    ]
+}
