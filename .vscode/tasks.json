@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/MediumDotnetIntro.sln",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Watch ASP",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+              "watch",
+              "run",
+              "/property:GenerateFullPaths=true",
+              "/consoleloggerparameters:NoSummary",
+              "--project",
+              "ASP"
+
+            ],
+            "problemMatcher": "$msCompile"
+          }
+    ]
+}

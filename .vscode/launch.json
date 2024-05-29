@@ -21,6 +21,20 @@
             "type": "dotnet",
             "request": "launch",
             "projectPath": "${workspaceFolder}/Async/Async.csproj",
-        }
+
+        }, {
+            "type": "dotnetwatchattach",
+            "request": "launch",
+            "name": "ASP",
+            "launchSettingsProfile": "dev",            
+            "task": "Watch ASP",
+            "program": "ASP",
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+http://\\S+:([0-9]+)",
+                "uriFormat": "http://localhost:%s/swagger"            
+            },
+        },
+
     ]
 }

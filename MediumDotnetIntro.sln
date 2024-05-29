@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Async", "Async\Async.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iterator", "Iterator\Iterator.csproj", "{8D6ED768-5035-454F-977C-B27EDBF4DC79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP", "ASP\ASP.csproj", "{0668C52D-CA3C-4810-939B-5561EBEF3887}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{8D6ED768-5035-454F-977C-B27EDBF4DC79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D6ED768-5035-454F-977C-B27EDBF4DC79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D6ED768-5035-454F-977C-B27EDBF4DC79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0668C52D-CA3C-4810-939B-5561EBEF3887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0668C52D-CA3C-4810-939B-5561EBEF3887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0668C52D-CA3C-4810-939B-5561EBEF3887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0668C52D-CA3C-4810-939B-5561EBEF3887}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
