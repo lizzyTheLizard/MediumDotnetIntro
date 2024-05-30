@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace ASP;
@@ -18,6 +19,9 @@ file static class WebApplicationBuilderExtensions
 {
     public static void SetupDI(this WebApplicationBuilder builder)
     {
+        //Add Properties to DI
+        builder.Services.Configure<ExampleOptions>(builder.Configuration.GetSection(ExampleOptions.Example));
+
         //Add controllers to DI
         builder.Services.AddControllers();
 
@@ -28,13 +32,13 @@ file static class WebApplicationBuilderExtensions
         //Add DB-Dummy to DI
         builder.Services.AddSingleton<ExampleDatabase>();
 
-        //Add Health Checks to DI
+        //Configure Health Checks to DI
         builder.Services.AddHealthChecks()
             .AddCheck("test1", () => HealthCheckResult.Unhealthy("This is always unhealthy"))
             .AddCheck("test2", () => HealthCheckResult.Healthy("This is always healthy"));
 
-        //Add Properties to DI
-        builder.Services.Configure<ExampleOptions>(builder.Configuration.GetSection(ExampleOptions.Example));
+        //Configure HTTP-Logging
+        builder.Services.AddHttpLogging(o => { });
     }
 
     public static void SetupMiddleware(this WebApplication app)
@@ -46,6 +50,7 @@ file static class WebApplicationBuilderExtensions
             app.UseSwaggerUI();
         }
         app.UseMiddleware<ExampleMiddleware>();
+        app.UseHttpLogging();
         app.MapHealthChecks("/health");
         app.UseAuthorization();
         app.MapControllers();

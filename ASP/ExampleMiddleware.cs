@@ -9,9 +9,9 @@ namespace ASP
 
         public async Task Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
         {
-            _logger.LogInformation("Handling request: {path}", httpContext.Request.Path);
+            _logger.LogInformation(201, "Handling request: {path}", httpContext.Request.Path);
             await _next(httpContext);
-            _logger.LogInformation("Finished handling request with code {code}", httpContext.Response.StatusCode);
+            _logger.LogInformation(202, "Finished handling request with code {code}", httpContext.Response.StatusCode);
             return;
         }
 
