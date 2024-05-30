@@ -3,25 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatternMatching", "PatternMatching\PatternMatching.csproj", "{F5117C19-A608-4888-882C-50EB3CF01AD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatternMatching", "PatternMatching\PatternMatching.csproj", "{F5117C19-A608-4888-882C-50EB3CF01AD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Various", "Various\Various.csproj", "{56B554FE-BE34-45D5-901B-7AE937EA53CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Various", "Various\Various.csproj", "{56B554FE-BE34-45D5-901B-7AE937EA53CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq", "Linq\Linq.csproj", "{8BA2393C-038D-4C90-BC3B-ADD96DE42580}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linq", "Linq\Linq.csproj", "{8BA2393C-038D-4C90-BC3B-ADD96DE42580}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Async", "Async\Async.csproj", "{F6D7DA57-01BF-468D-9440-D7CBEA0BE65F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Async", "Async\Async.csproj", "{F6D7DA57-01BF-468D-9440-D7CBEA0BE65F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iterator", "Iterator\Iterator.csproj", "{8D6ED768-5035-454F-977C-B27EDBF4DC79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iterator", "Iterator\Iterator.csproj", "{8D6ED768-5035-454F-977C-B27EDBF4DC79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP", "ASP\ASP.csproj", "{0668C52D-CA3C-4810-939B-5561EBEF3887}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP", "ASP\ASP.csproj", "{0668C52D-CA3C-4810-939B-5561EBEF3887}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPTest", "ASPTest\ASPTest.csproj", "{1FC65D26-BA5D-405B-AAE2-BD548E959778}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F5117C19-A608-4888-882C-50EB3CF01AD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -48,5 +47,15 @@ Global
 		{0668C52D-CA3C-4810-939B-5561EBEF3887}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0668C52D-CA3C-4810-939B-5561EBEF3887}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0668C52D-CA3C-4810-939B-5561EBEF3887}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FC65D26-BA5D-405B-AAE2-BD548E959778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC65D26-BA5D-405B-AAE2-BD548E959778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC65D26-BA5D-405B-AAE2-BD548E959778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC65D26-BA5D-405B-AAE2-BD548E959778}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8ABEA56B-FC5B-449B-9F52-3BF5049840F3}
 	EndGlobalSection
 EndGlobal

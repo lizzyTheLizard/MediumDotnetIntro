@@ -6,11 +6,10 @@ namespace ASP
 {
     [ApiController]
     [Route("[controller]")]
-    public class ExampleController(ILogger<ExampleController> logger, IOptions<ExampleOptions> options, ExampleDatabase database) : ControllerBase
+    public class ExampleController(ILogger<ExampleController> logger, ExampleDatabase database) : ControllerBase
     {
         private readonly ILogger<ExampleController> _logger = logger;
         private readonly ExampleDatabase _database = database;
-        private readonly ExampleOptions _options = options.Value;
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -60,16 +59,22 @@ namespace ASP
             var existing = _database.GetForId(input.Id);
             if (existing != null)
             {
-                return BadRequest($"There is alredy an item with id {input.Id}");
+                var result = await _database.Update(input);
+                _logger.LogInformation(104, "Updated {existing} to {result}", existing, result);
+                return Ok(result);
             }
-            var result = await _database.Create(input);
-            _logger.LogInformation(104, "Added {result}", result);
-            return CreatedAtAction(nameof(GetForId), result.Id, result);
+            else
+            {
+                var result = await _database.Create(input);
+                _logger.LogInformation(104, "Added {result}", result);
+                return CreatedAtAction(nameof(GetForId), result.Id, result);
+            }
         }
 
         [HttpPut]
+        [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult<Example>> Update([FromBody] Example input)
+        public async Task<ActionResult<Example>> Update(Guid id, [FromBody] Example input)
         {
             //TODO: Is this needed?
             if (!ModelState.IsValid)
@@ -77,7 +82,12 @@ namespace ASP
                 _logger.LogWarning(105, "Invalid input: {input}", input);
                 return BadRequest(ModelState);
             }
-            var existing = _database.GetForId(input.Id);
+            if(id != input.Id)
+            {
+                _logger.LogWarning(105, "ID {id} in path but {id2} in body", id, input.Id);
+                return BadRequest("Invalid ID in Body");
+            }
+            var existing = await _database.GetForId(id);
             if (existing == null)
             {
                 return NotFound();
@@ -87,28 +97,19 @@ namespace ASP
             return Ok(result);
         }
 
-        [HttpGet]
-        [Route("options")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<ExampleOptions> GetOptions()
+        [HttpDelete]
+        [Route("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<ActionResult<Example>> Delete(Guid id)
         {
-            _logger.LogDebug(106, "Returning all options: {options}", _options);
-            return Ok(_options);
-        }
-
-        [HttpGet]
-        [Route("log")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<ExampleOptions> Log()
-        {
-            //Using scopes you can add additional information to the log message
-            using (_logger.BeginScope(new List<KeyValuePair<string, object>> {  new("TransactionId", "value")}))
+            var existing = await _database.GetForId(id);
+            if (existing == null)
             {
-                //Events can be used to associates a set of log messages with a specific event
-                _logger.LogInformation(107, "This is a test log message with scope2");
+                return NotFound();
             }
-            return Ok();
+            await _database.Delete(id);
+            _logger.LogInformation(106, "Deleted {existing}", existing);
+            return NoContent();
         }
-
     }
 }

@@ -36,5 +36,17 @@
             _examples.Add(input);
             return input;
         }
+
+        public async Task Delete(Guid id)
+        {
+            await Task.Delay(10);
+            _examples.RemoveAll(e => e.Id == id);
+        }
+
+        public async Task Clear()
+        {
+            await Task.Delay(10);
+            _examples.Clear();
+        }
     }
 }

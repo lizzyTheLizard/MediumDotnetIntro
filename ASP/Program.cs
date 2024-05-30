@@ -33,9 +33,7 @@ file static class WebApplicationBuilderExtensions
         builder.Services.AddSingleton<ExampleDatabase>();
 
         //Configure Health Checks to DI
-        builder.Services.AddHealthChecks()
-            .AddCheck("test1", () => HealthCheckResult.Unhealthy("This is always unhealthy"))
-            .AddCheck("test2", () => HealthCheckResult.Healthy("This is always healthy"));
+        builder.Services.AddHealthChecks().AddCheck<ExampleHealthCheck>("Sample");
 
         //Configure HTTP-Logging
         builder.Services.AddHttpLogging(o => { });
@@ -51,7 +49,7 @@ file static class WebApplicationBuilderExtensions
         }
         app.UseMiddleware<ExampleMiddleware>();
         app.UseHttpLogging();
-        app.MapHealthChecks("/health");
+        app.MapHealthChecks("/Health");
         app.UseAuthorization();
         app.MapControllers();
     }
