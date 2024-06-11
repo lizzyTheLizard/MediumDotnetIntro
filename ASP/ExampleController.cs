@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 
 namespace ASP
 {
@@ -50,12 +48,6 @@ namespace ASP
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<Example>> Create([FromBody] Example input)
         {
-            //TODO: Is this needed?
-            if (!ModelState.IsValid)
-            {
-                _logger.LogWarning(104, "Invalid input: {input}", input);
-                return BadRequest(ModelState);
-            }
             var existing = _database.GetForId(input.Id);
             if (existing != null)
             {
@@ -76,12 +68,6 @@ namespace ASP
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<Example>> Update(Guid id, [FromBody] Example input)
         {
-            //TODO: Is this needed?
-            if (!ModelState.IsValid)
-            {
-                _logger.LogWarning(105, "Invalid input: {input}", input);
-                return BadRequest(ModelState);
-            }
             if(id != input.Id)
             {
                 _logger.LogWarning(105, "ID {id} in path but {id2} in body", id, input.Id);

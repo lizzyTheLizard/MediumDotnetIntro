@@ -18,7 +18,6 @@ namespace ASPTest
             response.EnsureSuccessStatusCode();
             Assert.Equal("text/plain", response.Content.Headers.ContentType?.ToString());
             Assert.Equal("Healthy", await response.Content.ReadAsStringAsync());
-
         }
 
         [Fact]

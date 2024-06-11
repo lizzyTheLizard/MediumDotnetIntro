@@ -15,7 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iterator", "Iterator\Iterat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP", "ASP\ASP.csproj", "{0668C52D-CA3C-4810-939B-5561EBEF3887}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPTest", "ASPTest\ASPTest.csproj", "{1FC65D26-BA5D-405B-AAE2-BD548E959778}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASPTest", "ASPTest\ASPTest.csproj", "{1FC65D26-BA5D-405B-AAE2-BD548E959778}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework", "EntityFramework\EntityFramework.csproj", "{FD913F87-2867-4CF1-BDEB-EED9C647B9F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkTest", "EntityFrameworkTest\EntityFrameworkTest.csproj", "{47046AA7-4FE7-4050-BD84-C8CA7636ED9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{1FC65D26-BA5D-405B-AAE2-BD548E959778}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FC65D26-BA5D-405B-AAE2-BD548E959778}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FC65D26-BA5D-405B-AAE2-BD548E959778}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD913F87-2867-4CF1-BDEB-EED9C647B9F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD913F87-2867-4CF1-BDEB-EED9C647B9F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD913F87-2867-4CF1-BDEB-EED9C647B9F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD913F87-2867-4CF1-BDEB-EED9C647B9F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47046AA7-4FE7-4050-BD84-C8CA7636ED9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47046AA7-4FE7-4050-BD84-C8CA7636ED9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47046AA7-4FE7-4050-BD84-C8CA7636ED9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47046AA7-4FE7-4050-BD84-C8CA7636ED9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

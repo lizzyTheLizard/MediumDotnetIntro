@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.HttpLogging;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
+
+using OpenTelemetry.Metrics;
 
 namespace ASP;
 
@@ -8,17 +9,7 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        builder.SetupDI();
-        var app = builder.Build();
-        app.SetupMiddleware();
-        app.Run();
-    }
-}
 
-file static class WebApplicationBuilderExtensions
-{
-    public static void SetupDI(this WebApplicationBuilder builder)
-    {
         //Add Properties to DI
         builder.Services.Configure<ExampleOptions>(builder.Configuration.GetSection(ExampleOptions.Example));
 
@@ -36,22 +27,34 @@ file static class WebApplicationBuilderExtensions
         builder.Services.AddHealthChecks().AddCheck<ExampleHealthCheck>("Sample");
 
         //Configure HTTP-Logging
-        builder.Services.AddHttpLogging(o => { });
-    }
+        builder.Services.AddHttpLogging(o => { 
+            o.LoggingFields = HttpLoggingFields.RequestPath | HttpLoggingFields.RequestMethod | HttpLoggingFields.ResponseStatusCode;
+            o.CombineLogs = true;
+        
+        });
 
-    public static void SetupMiddleware(this WebApplication app)
-    {
+        //Configure OpenTelemetry
+        builder.Services.AddOpenTelemetry().WithMetrics(builder => {
+            builder.AddPrometheusExporter();
+            builder.AddMeter("Microsoft.AspNetCore.Hosting", "Microsoft.AspNetCore.Server.Kestrel", "Example");
+        });
+
+        // Normally you do not have to add a middleware to the DI, but in this case we need it to add the metric
+        builder.Services.AddSingleton<ApiTagMetric>();
+
+        var app = builder.Build();
+        app.UseMiddleware<MetricsTaggingMiddleware>();
+        app.UseHttpLogging();
+        app.UseAuthorization();
+        app.UseHealthChecks("/Health");
+        app.UseOpenTelemetryPrometheusScrapingEndpoint("/Metrics");
         //Use Swagger only in Development
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
             app.UseSwaggerUI();
         }
-        app.UseMiddleware<ExampleMiddleware>();
-        app.UseHttpLogging();
-        app.MapHealthChecks("/Health");
-        app.UseAuthorization();
         app.MapControllers();
+        app.Run();
     }
-
 }

@@ -1,0 +1,73 @@
+@EntityFramework_HostAddress = http://localhost:5133
+
+GET {{EntityFramework_HostAddress}}/Example/
+Accept: application/json
+
+###
+GET {{EntityFramework_HostAddress}}/Example/ByDate/2023-01-01
+Accept: application/json
+
+###
+GET {{EntityFramework_HostAddress}}/Example/7ae90fe1-b80a-4dd4-9495-000000000000
+Accept: application/json
+
+###
+POST {{EntityFramework_HostAddress}}/Example
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Id": "7ae90fe1-b80a-4dd4-9495-000000000000",
+  "Date": "2023-01-01",
+  "Value": 2,
+  "Note": "Test",
+  "SubExamples": [{
+    "Id": "7ae90fe1-b80a-4dd4-9495-000000000001",
+    "Value": 4,
+    "Note": "Test 1"
+  }]
+}
+
+
+###
+POST {{EntityFramework_HostAddress}}/Example
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Id": "7ae90fe1-b80a-4dd4-9492-000000000000",
+  "Date": "2023-01-01",
+  "Value": 2,
+  "Note": "Test Locking Z",
+  "SubExamples": [],
+  "timestamp": 1717659271
+}
+
+###
+PUT {{EntityFramework_HostAddress}}/Example/7ae90fe1-b80a-4dd4-9492-000000000000
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Id": "7ae90fe1-b80a-4dd4-9492-000000000000",
+  "Date": "2023-01-01",
+  "Value": 5,
+  "Note": "Test",
+  "Timestamp": 1717659537
+}
+
+###
+DELETE {{EntityFramework_HostAddress}}/Example/7ae90fe1-b80a-4dd4-9494-af9bbb8728cb
+Accept: application/json
+
+###
+GET {{EntityFramework_HostAddress}}/Favorite
+Accept: application/json
+
+###
+PUT {{EntityFramework_HostAddress}}/Favorite
+Accept: application/json
+Content-Type: application/json
+
+"7ae90fe1-b80a-4dd4-9495-000000000000"
+  

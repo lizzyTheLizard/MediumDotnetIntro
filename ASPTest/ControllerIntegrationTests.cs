@@ -103,6 +103,19 @@ namespace ASPTest
         }
 
         [Fact]
+        public async Task PostInvalid()
+        {
+            var database = factory.Services.GetService<ExampleDatabase>()!;
+            var example = new Example(Guid.NewGuid(), new DateOnly(1990, 1, 1), 0, "In Short: Test");
+            var client = factory.CreateClient();
+
+            var response = await client.PostAsync("/Example", JsonContent.Create(example));
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+            Assert.Equal("application/problem+json; charset=utf-8", response.Content.Headers.ContentType?.ToString());
+            Assert.Null(await database.GetForId(example.Id));
+        }
+
+        [Fact]
         public async Task PostExisting()
         {
             var database = factory.Services.GetService<ExampleDatabase>()!;
@@ -132,6 +145,19 @@ namespace ASPTest
             Assert.Equal(updatedExample, await database.GetForId(example.Id));
         }
 
+        [Fact]
+        public async Task PutInvalid()
+        {
+            var database = factory.Services.GetService<ExampleDatabase>()!;
+            var example = await database.Create(new Example(Guid.NewGuid(), new DateOnly(2022, 1, 1), 0, "In Short: Test"));
+            var updatedExample = example with { Date = new DateOnly(1990, 1, 2) };
+            var client = factory.CreateClient();
+
+            var response = await client.PutAsync($"/Example/{updatedExample.Id}", JsonContent.Create(updatedExample));
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+            Assert.Equal("application/problem+json; charset=utf-8", response.Content.Headers.ContentType?.ToString());
+            Assert.Equal(example, await database.GetForId(example.Id));
+        }
 
         [Fact]
         public async Task PutNonExisting()
