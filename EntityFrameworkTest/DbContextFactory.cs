@@ -1,14 +1,14 @@
 ﻿using EntityFramework;
+
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
 namespace EntityFrameworkTest;
 
 // Needed for unit tests to use the test db context instead of the real one
-
 public class DbContextFactory : IDisposable
 {
-    private readonly SqliteConnection _connection = new ("Filename=:memory:");
+    private readonly SqliteConnection _connection = new("Filename=:memory:");
     private bool _disposed = false;
 
     public DbContextFactory()

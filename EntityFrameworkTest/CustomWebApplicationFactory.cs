@@ -1,6 +1,4 @@
-﻿using System.Data.Common;
-
-using EntityFramework;
+﻿using EntityFramework;
 
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Data.Sqlite;
@@ -13,12 +11,13 @@ namespace EntityFrameworkTest;
 public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 {
     private bool _disposed = false;
-    private readonly SqliteConnection _connection = new ("Filename=:memory:");
+    private readonly SqliteConnection _connection = new("Filename=:memory:");
 
     public CustomWebApplicationFactory()
     {
         _connection.Open();
         using var context = CreateContext();
+        //This ensures that the DB is as defined by the model
         context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
         ResetDatabase();
@@ -58,6 +57,7 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
     {
         builder.ConfigureServices(services =>
         {
+            //You can change the services loaded by Programm.cs and add the test services
             services.RemoveAll<DbContextOptions<ExampleDbContext>>();
             services.AddDbContext<ExampleDbContext>((container, options) => options.UseSqlite(_connection));
         });

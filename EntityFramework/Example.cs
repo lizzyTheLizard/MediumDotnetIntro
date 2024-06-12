@@ -1,5 +1,7 @@
 ﻿namespace EntityFramework;
 
+//An entity class can be a "normal" class. It should be mutable, immutable classes are possible but harder
+//The model code (where and what to map) is done in the Context-Class
 public class Example
 {
     public required Guid Id { get; set; }
@@ -15,6 +17,7 @@ public class Example
 
     public long Timestamp { get; set; }
 
+    //Overwritten for Tests
     public override bool Equals(Object? obj)
     {
         if (obj == null || GetType() != obj.GetType())
@@ -34,6 +37,7 @@ public class Example
         return SubExamples.SequenceEqual(other.SubExamples);
     }
 
+    //Needs to be overwritten if Equals is overwritten
     public override int GetHashCode()
     {
         return Id.GetHashCode();

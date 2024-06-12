@@ -1,10 +1,9 @@
-﻿using EntityFramework;
-
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EntityFramework;
 
+// Normal controller using the DBCOntext
 [ApiController]
 [Route("[controller]")]
 public class ExampleController(ILogger<ExampleController> logger, ExampleDbContext dbContext) : ControllerBase
@@ -76,7 +75,7 @@ public class ExampleController(ILogger<ExampleController> logger, ExampleDbConte
         //This will save all changes in one transaction
         await dbContext.SaveChangesAsync();
         logger.LogInformation(104, "Updated {id} to {existing}", input.Id, existing);
-        return CreatedAtAction(nameof(GetForId), new{ id = input.Id }, existing);
+        return CreatedAtAction(nameof(GetForId), new { id = input.Id }, existing);
     }
 
     [HttpPut("{id}")]

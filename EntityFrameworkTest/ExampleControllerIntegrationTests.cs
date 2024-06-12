@@ -1,4 +1,5 @@
 ﻿using System.Net;
+
 using EntityFramework;
 
 
@@ -14,7 +15,8 @@ public class ExampleControllerIntegrationTests(CustomWebApplicationFactory facto
         var id = Guid.NewGuid();
         var example = new Example { Id = id, Date = DateOnly.FromDateTime(DateTime.Now), Value = 3, SubExamples = [], Note = "Test" };
 
-        using (var database = factory.CreateContext()) {
+        using (var database = factory.CreateContext())
+        {
             database.Examples.Add(example);
             await database.SaveChangesAsync();
         }

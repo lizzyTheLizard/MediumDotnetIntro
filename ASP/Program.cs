@@ -27,14 +27,16 @@ public class Program
         builder.Services.AddHealthChecks().AddCheck<ExampleHealthCheck>("Sample");
 
         //Configure HTTP-Logging
-        builder.Services.AddHttpLogging(o => { 
+        builder.Services.AddHttpLogging(o =>
+        {
             o.LoggingFields = HttpLoggingFields.RequestPath | HttpLoggingFields.RequestMethod | HttpLoggingFields.ResponseStatusCode;
             o.CombineLogs = true;
-        
+
         });
 
         //Configure OpenTelemetry
-        builder.Services.AddOpenTelemetry().WithMetrics(builder => {
+        builder.Services.AddOpenTelemetry().WithMetrics(builder =>
+        {
             builder.AddPrometheusExporter();
             builder.AddMeter("Microsoft.AspNetCore.Hosting", "Microsoft.AspNetCore.Server.Kestrel", "Example");
         });

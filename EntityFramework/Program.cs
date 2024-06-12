@@ -14,6 +14,7 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddControllers();
+        //Provide the DBConext
         builder.Services.AddDbContext<ExampleDbContext>(o => o.UseSqlite($"Data Source={GetDbPath()}"));
         var app = builder.Build();
         app.MapControllers();
