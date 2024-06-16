@@ -1,0 +1,17 @@
+@Security_HostAddress = http://localhost:5152
+
+GET {{Security_HostAddress}}/weatherforecast/
+Accept: application/json
+Authorization: Basic QWRtaW46U2VjcmV0
+
+###
+GET {{Security_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+GET {{Security_HostAddress}}/weatherforecast/public
+Accept: application/json
+
+###
+GET {{Security_HostAddress}}/weatherforecast/local
+Accept: application/json

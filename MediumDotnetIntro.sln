@@ -19,7 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASPTest", "ASPTest\ASPTest.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework", "EntityFramework\EntityFramework.csproj", "{FD913F87-2867-4CF1-BDEB-EED9C647B9F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkTest", "EntityFrameworkTest\EntityFrameworkTest.csproj", "{47046AA7-4FE7-4050-BD84-C8CA7636ED9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkTest", "EntityFrameworkTest\EntityFrameworkTest.csproj", "{47046AA7-4FE7-4050-BD84-C8CA7636ED9D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Security", "Security\Security.csproj", "{8456F42E-F272-492C-B098-98689DDAAC94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityTest", "SecurityTest\SecurityTest.csproj", "{71BD3170-9663-4A69-90C6-5805B0CD0423}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +67,14 @@ Global
 		{47046AA7-4FE7-4050-BD84-C8CA7636ED9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47046AA7-4FE7-4050-BD84-C8CA7636ED9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47046AA7-4FE7-4050-BD84-C8CA7636ED9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8456F42E-F272-492C-B098-98689DDAAC94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8456F42E-F272-492C-B098-98689DDAAC94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8456F42E-F272-492C-B098-98689DDAAC94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8456F42E-F272-492C-B098-98689DDAAC94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71BD3170-9663-4A69-90C6-5805B0CD0423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71BD3170-9663-4A69-90C6-5805B0CD0423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71BD3170-9663-4A69-90C6-5805B0CD0423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71BD3170-9663-4A69-90C6-5805B0CD0423}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
